@@ -16,6 +16,28 @@
   </div>
 </template>
 
+<script>
+import _debounce from 'lodash.debounce'
+
+export default {
+  /**
+   * Recalculate vh for mobile devices
+   */
+  created () {
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+
+    window.addEventListener('resize', _debounce(
+      () => {
+        let vh = window.innerHeight * 0.01
+        document.documentElement.style.setProperty('--vh', `${vh}px`)
+      },
+      150)
+    )
+  }
+}
+</script>
+
 <style lang="scss">
 @import "./design"
 </style>
