@@ -1,0 +1,26 @@
+.export-converter {
+    .input-area-wrapper {
+        flex: 1 1 50%; 
+        display: flex; 
+        flex-direction: column; 
+        margin-bottom: 0.5rem;
+
+        .full-height-textarea {
+            min-height: inherit;
+            max-height: inherit;
+            height: 100%;
+        }
+    }
+
+    .output-area-wrapper {
+        flex: 0 1 50%; 
+        overflow: hidden; 
+        display: flex; 
+        flex-direction: column; 
+        margin-bottom: 0.5rem;
+    }
+
+    .options-area-wrapper {
+        flex: 0 0 auto;
+    }
+}

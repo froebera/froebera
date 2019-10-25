@@ -1,0 +1,11 @@
+.page {
+    height: calc( 100vh - 3.25rem);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.page-flex-container {
+    display: flex; 
+    flex-direction: column; 
+    height: 100%;
+}
