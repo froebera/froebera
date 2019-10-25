@@ -12,11 +12,12 @@
         v-if="exportedDataOldFormat"
         class="output-area-wrapper"
       >
-        <div
+        <!-- <div
           style="overflow: auto; white-space: pre;"
         >
           {{ exportedDataOldFormat }}
-        </div>
+        </div> -->
+        <textarea ref="exportData" class="textarea full-height-textarea" v-model="exportedDataOldFormat" readonly/>
       </div>
       <div>
         <b-field position="is-right" class="options-area-wrapper">
@@ -24,7 +25,7 @@
             <b-button type="is-primary" @click="convert">Convert</b-button>
           </p>
           <p class="control">
-            <b-button @click="copyToClipboard" :disabled="exportedDataOldFormat.length === 0">Copy to clipboard</b-button>
+            <b-button ref="copyButton" @click="copyToClipboard" :disabled="exportedDataOldFormat.length === 0">Copy to clipboard</b-button>
           </p>
         </b-field>
       </div>
@@ -94,7 +95,12 @@ export default {
       return Math.round(parseFloat(numAsStr) * si[c])
     },
     copyToClipboard () {
-      navigator.clipboard.writeText(this.exportedDataOldFormat)
+      const el = this.$refs['exportData']
+      el.select()
+      el.setSelectionRange(0, 99999) /* For mobile devices */
+
+      document.execCommand('copy')
+      this.$refs['copyButton'].$el.focus()
     }
   }
 }
