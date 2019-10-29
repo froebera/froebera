@@ -7,7 +7,7 @@
     "vue-build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "copy": "node ./build/copy-server-stuff.js",
-    "build": "npm-run-all build copy"
+    "build": "npm-run-all vue-build copy"
   },
   "dependencies": {
     "buefy": "^0.8.6",
