@@ -46,23 +46,27 @@ export default {
   methods: {
     convert () {
       this.exportedDataOldFormat = ''
-
       let parsedData = papaparse.parse(this.exportedData, {
-        header: true
+        header: true,
+        error: (err) => {
+          console.log(err)
+        }
       })
 
       let filteredData = parsedData.data.filter((data, i) => {
-        return data['Player Code'] && parsedData.data.findIndex(
-          d => d['Player Code'] === data['Player Code']
-        ) === i
+        // return data['PlayerCode'] && parsedData.data.findIndex(
+        //   d => d['PlayerCode'] === data['PlayerCode']
+        // ) === i
+        return data['TitanNumber'] === '0'
       })
 
       let mappedData = filteredData.map(data => {
         return {
-          'Name': data['Player Name'],
-          'ID': data['Player Code'],
-          'Attacks': data['Total Attacks'],
-          'Damage': this.convertTotalDamage(data['Total Damage'])
+          'Name': data['PlayerName'],
+          'ID': data['PlayerCode'],
+          'Attacks': data['TotalRaidAttacks'],
+          // 'Damage': this.convertTotalDamage(data['Total Damage'])
+          'Damage': parseInt(data['TitanDamage'])
         }
       })
 
