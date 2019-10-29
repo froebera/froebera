@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     async fetchJoke () {
-      const { data } = await axios.get('http://localhost:8080/joke')
+      const { data } = await axios.get('/service/dad-jokes/joke')
       this.joke = data.joke
     }
   }
