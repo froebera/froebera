@@ -49,7 +49,7 @@ export default {
       let parsedData = papaparse.parse(this.exportedData, {
         header: true,
         error: (err) => {
-          console.log(err)
+          console.error(err)
         }
       })
 
