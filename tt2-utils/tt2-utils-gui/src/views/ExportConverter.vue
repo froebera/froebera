@@ -35,6 +35,8 @@
 
 <script>
 import papaparse from 'papaparse'
+import _groupBy from 'lodash.groupby'
+
 export default {
   name: 'ExportConverter',
   data () {
@@ -59,6 +61,8 @@ export default {
         // ) === i
         return data['TitanNumber'] === '0'
       })
+
+      // let groupedData = _groupBy(parsedData.data.filter(d => d['PlayerName']), d => d['PlayerCode'])
 
       let mappedData = filteredData.map(data => {
         return {
