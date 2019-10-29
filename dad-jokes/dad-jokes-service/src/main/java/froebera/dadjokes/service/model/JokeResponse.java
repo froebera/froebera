@@ -1,4 +1,4 @@
-package froebera.dadjokeservice.model;
+package froebera.dadjokes.service.model;
 
 public class JokeResponse {
     public String id;

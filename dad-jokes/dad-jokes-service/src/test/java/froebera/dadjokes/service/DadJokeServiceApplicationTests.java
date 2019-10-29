@@ -1,4 +1,4 @@
-package froebera.dadjokeservice;
+package froebera.dadjokes.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

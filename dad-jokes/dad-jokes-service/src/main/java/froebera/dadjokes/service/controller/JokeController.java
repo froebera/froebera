@@ -1,6 +1,6 @@
-package froebera.dadjokeservice.controller;
+package froebera.dadjokes.service.controller;
 
-import froebera.dadjokeservice.model.JokeResponse;
+import froebera.dadjokes.service.model.JokeResponse;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
