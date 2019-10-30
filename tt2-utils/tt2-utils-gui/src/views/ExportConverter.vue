@@ -115,11 +115,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.textarea {
-  height: 100%;
-  min-height: inherit !important;
-  max-height: inherit !important;
-}
-</style>

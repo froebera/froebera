@@ -4,12 +4,6 @@
         display: flex; 
         flex-direction: column; 
         margin-bottom: 0.5rem;
-
-        .full-height-textarea {
-            min-height: inherit;
-            max-height: inherit;
-            height: 100%;
-        }
     }
 
     .output-area-wrapper {
@@ -18,6 +12,13 @@
         display: flex; 
         flex-direction: column; 
         margin-bottom: 0.5rem;
+    }
+
+    .full-height-textarea {
+        min-height: inherit;
+        max-height: inherit;
+        height: 100%;
+        resize: none;
     }
 
     .options-area-wrapper {
