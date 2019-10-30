@@ -55,22 +55,24 @@ export default {
         }
       })
 
-      let filteredData = parsedData.data.filter((data, i) => {
-        // return data['PlayerCode'] && parsedData.data.findIndex(
-        //   d => d['PlayerCode'] === data['PlayerCode']
-        // ) === i
-        return data['TitanNumber'] === '0'
+      let groupedDataAsObj = _groupBy(parsedData.data.filter(d => d['PlayerName']), d => d['PlayerCode'])
+      let groupedData = []
+
+      Object.keys(groupedDataAsObj).forEach(key => {
+        let data = groupedDataAsObj[key]
+        groupedData.push(data)
       })
 
-      // let groupedData = _groupBy(parsedData.data.filter(d => d['PlayerName']), d => d['PlayerCode'])
-
-      let mappedData = filteredData.map(data => {
+      let mappedData = groupedData.map(data => {
+        let highestDmgAttack = data.reduce((prev, current) => {
+          return parseInt(prev.TitanDamage) > parseInt(current.TitanDamage) ? prev : current
+        })
         return {
-          'Name': data['PlayerName'],
-          'ID': data['PlayerCode'],
-          'Attacks': data['TotalRaidAttacks'],
+          'Name': highestDmgAttack['PlayerName'],
+          'ID': highestDmgAttack['PlayerCode'],
+          'Attacks': highestDmgAttack['TotalRaidAttacks'],
           // 'Damage': this.convertTotalDamage(data['Total Damage'])
-          'Damage': parseInt(data['TitanDamage'])
+          'Damage': parseInt(highestDmgAttack['TitanDamage'])
         }
       })
 
