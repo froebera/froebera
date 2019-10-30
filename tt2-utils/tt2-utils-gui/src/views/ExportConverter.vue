@@ -71,12 +71,11 @@ export default {
           'Name': highestDmgAttack['PlayerName'],
           'ID': highestDmgAttack['PlayerCode'],
           'Attacks': highestDmgAttack['TotalRaidAttacks'],
-          // 'Damage': this.convertTotalDamage(data['Total Damage'])
           'Damage': parseInt(highestDmgAttack['TitanDamage'])
         }
       })
 
-      let orderedMap = mappedData.sort((a, b) => b.totalDmg - a.totalDmg)
+      let orderedMap = mappedData.sort((a, b) => b.Damage - a.Damage)
 
       let withRank = orderedMap.map((d, i) => {
         return {
