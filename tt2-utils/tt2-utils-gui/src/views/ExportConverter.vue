@@ -64,14 +64,17 @@ export default {
       })
 
       let mappedData = groupedData.map(data => {
-        let highestDmgAttack = data.reduce((prev, current) => {
-          return parseInt(prev.TitanDamage) > parseInt(current.TitanDamage) ? prev : current
-        })
+        let statsRecord = data[0]
+
+        let totalDmg = data.reduce((dmg, d) => {
+          return dmg + parseInt(d.TitanDamage)
+        }, 0)
+
         return {
-          'Name': highestDmgAttack['PlayerName'],
-          'ID': highestDmgAttack['PlayerCode'],
-          'Attacks': highestDmgAttack['TotalRaidAttacks'],
-          'Damage': parseInt(highestDmgAttack['TitanDamage'])
+          'Name': statsRecord['PlayerName'],
+          'ID': statsRecord['PlayerCode'],
+          'Attacks': statsRecord['TotalRaidAttacks'],
+          'Damage': totalDmg
         }
       })
 
