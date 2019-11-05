@@ -16,7 +16,7 @@ export default {
   name: 'JokeComponent',
   data () {
     return {
-      joke: ''
+      joke: '',
     }
   },
   created () {
