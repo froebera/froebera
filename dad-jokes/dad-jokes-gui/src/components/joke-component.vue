@@ -1,32 +1,30 @@
 <template>
   <div class="joke-component">
-    <p class="is-size-3" v-text="joke"/>
+    <p class="is-size-3" v-text="joke" />
     <div class="control">
-      <button class="button is-light" @click="fetchJoke">
-        Fetch new Joke
-      </button>
+      <button class="button is-light" @click="fetchJoke">Fetch new Joke</button>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-  name: 'JokeComponent',
-  data () {
+  name: "JokeComponent",
+  data() {
     return {
-      joke: '',
-    }
+      joke: ""
+    };
   },
-  created () {
-    this.fetchJoke()
+  created() {
+    this.fetchJoke();
   },
   methods: {
-    async fetchJoke () {
-      const { data } = await axios.get('/service/dad-jokes/joke')
-      this.joke = data.joke
+    async fetchJoke() {
+      const { data } = await axios.get(`localhost:8090/joke`);
+      this.joke = data.joke;
     }
   }
-}
+};
 </script>

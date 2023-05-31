@@ -1,0 +1,9 @@
+services:
+  gui:
+    build: ./dad-jokes-gui
+    ports:
+      - 8080:8080
+  service:
+    build: ./dad-jokes-service
+    ports:
+      - 8090:8080
