@@ -8,23 +8,27 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 
 export default {
-  name: "JokeComponent",
-  data() {
+  name: 'JokeComponent',
+  data () {
     return {
-      joke: ""
-    };
+      joke: ''
+    }
   },
-  created() {
-    this.fetchJoke();
+  created () {
+    this.fetchJoke()
   },
   methods: {
-    async fetchJoke() {
-      const { data } = await axios.get(`localhost:8090/joke`);
-      this.joke = data.joke;
+    async fetchJoke () {
+      const { data } = await axios.get(`http://localhost:8090/joke`, {
+        headers: {
+          'Content-Type': 'text/plain'
+        }
+      })
+      this.joke = data.joke
     }
   }
-};
+}
 </script>
