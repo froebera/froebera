@@ -1,6 +1,9 @@
 # https://v2.vuejs.org/v2/cookbook/dockerize-vuejs-app.html
 FROM nikolaik/python-nodejs:python3.7-nodejs12-alpine
 
+ARG SERVICE_URL
+ENV VUE_APP_SERVICE_URL $SERVICE_URL
+
 # install simple http server for serving static content
 RUN npm install -g http-server
 

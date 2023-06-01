@@ -1,6 +1,9 @@
 services:
   gui:
-    build: ./dad-jokes-gui
+    build: 
+      context: ./dad-jokes-gui
+      args:
+      - SERVICE_URL=http://localhost:8090
     ports:
       - 8080:8080
   service:

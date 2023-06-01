@@ -22,7 +22,8 @@ export default {
   },
   methods: {
     async fetchJoke () {
-      const { data } = await axios.get(`http://localhost:8090/joke`, {
+      console.log(process.env.VUE_APP_SERVICE_URL)
+      const { data } = await axios.get(`${process.env.VUE_APP_SERVICE_URL}/joke`, {
         headers: {
           'Content-Type': 'text/plain'
         }
